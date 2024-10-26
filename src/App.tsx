@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 
 import NavBar from "./components/NavBar.tsx";
 import GameGrid from "./components/GameGrid.tsx";
 import GenreList from "./components/GenreList.tsx";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres.ts";
 
 function App() {
+    const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
     return (
         <Grid
             templateAreas={{
@@ -21,11 +25,16 @@ function App() {
             </GridItem>
             <Show above="lg">
                 <GridItem area="aside" paddingX="5px">
-                    <GenreList></GenreList>
+                    <GenreList
+                        onSelectGenre={(genre) => {
+                            setSelectedGenre(genre);
+                            console.log("From App.tsx: " + genre.name);
+                        }}
+                    ></GenreList>
                 </GridItem>
             </Show>
             <GridItem area="main">
-                <GameGrid></GameGrid>
+                <GameGrid selectedGenre={selectedGenre}></GameGrid>
             </GridItem>
         </Grid>
     );
