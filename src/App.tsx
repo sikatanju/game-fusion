@@ -31,6 +31,7 @@ function App() {
             <Show above="lg">
                 <GridItem area="aside" paddingX="5px">
                     <GenreList
+                        selectedGenre={selectedGenre}
                         onSelectGenre={(genre) => {
                             setSelectedGenre(genre);
                             console.log("From App.tsx: " + genre.name);
@@ -43,7 +44,7 @@ function App() {
                     selectedPlatform={selectedPlatform}
                     onSelectPlatform={(platform) => {
                         setSelectedPlatform(platform);
-                        console.log(platform.name)
+                        console.log(platform.name);
                     }}
                 />
                 <GameGrid
