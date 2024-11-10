@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import usePlatforms from "../hooks/usePlatforms";
-import { Platform } from "../hooks/useGames";
+import usePlatforms, { Platform } from "../hooks/usePlatforms";
 
 interface Props {
     onSelectPlatform: (platform: Platform) => void;
     selectedPlatform: Platform | null;
 }
 
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PlatformList = ({ onSelectPlatform, selectedPlatform }: Props) => {
     const { data, error } = usePlatforms();
 
