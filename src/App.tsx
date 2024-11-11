@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Button, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 
 import NavBar from "./components/NavBar.tsx";
 import GameGrid from "./components/GameGrid.tsx";
