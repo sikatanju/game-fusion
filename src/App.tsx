@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 
-import NavBar from "./components/NavBar.tsx";
-import GameGrid from "./components/GameGrid.tsx";
-import GenreList from "./components/GenreList.tsx";
 import { useState } from "react";
-import { Genre } from "./hooks/useGenres.ts";
-import PlatformSelector from "./components/PlatformSelector.tsx";
-import { Platform } from "./hooks/useGames.ts";
-import SortSelector from "./components/SortSelector.tsx";
+import GameGrid from "./components/GameGrid.tsx";
 import GameHeading from "./components/GameHeading.tsx";
+import GenreList from "./components/GenreList.tsx";
+import NavBar from "./components/NavBar.tsx";
+import PlatformSelector from "./components/PlatformSelector.tsx";
+import SortSelector from "./components/SortSelector.tsx";
 
 export interface GameQuery {
-    genre: Genre | null;
-    platform: Platform | null;
+    genreId?: number;
+    platformId?: number;
     sortOrder: string | null;
     searchText: string | null;
 }
@@ -42,10 +40,9 @@ function App() {
             <Show above="lg">
                 <GridItem area="aside" paddingX="5px">
                     <GenreList
-                        selectedGenre={gameQuery?.genre}
+                        selectedGenreId={gameQuery?.genreId || -1}
                         onSelectGenre={(genre) => {
-                            setGameQuery({ ...gameQuery, genre });
-                            console.log("From App.tsx: " + genre.name);
+                            setGameQuery({ ...gameQuery, genreId: genre.id });
                         }}
                     ></GenreList>
                 </GridItem>
@@ -55,9 +52,12 @@ function App() {
                     <GameHeading gameQuery={gameQuery}></GameHeading>
                     <HStack spacing={3} marginBottom={5}>
                         <PlatformSelector
-                            selectedPlatform={gameQuery.platform}
+                            selectedPlatformId={gameQuery.platformId}
                             onSelectPlatform={(platform) => {
-                                setGameQuery({ ...gameQuery, platform });
+                                setGameQuery({
+                                    ...gameQuery,
+                                    platformId: platform.id,
+                                });
                             }}
                         />
                         <SortSelector
