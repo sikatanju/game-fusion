@@ -31,6 +31,14 @@ class APIClient<T> {
             .get<T>(this.endpoint + "/" + id)
             .then((res) => res.data);
     };
+
+    getTrailer = (url: string) => {
+        console.log(this.endpoint + "/" + url);
+
+        return axiosInstance
+            .get<T>(this.endpoint + "/" + url)
+            .then((res) => res.data);
+    };
 }
 
 export default APIClient;
