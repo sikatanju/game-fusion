@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Heading } from "@chakra-ui/react";
 import { ReactNode } from "react";
 

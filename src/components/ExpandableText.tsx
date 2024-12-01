@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
