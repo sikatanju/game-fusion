@@ -6,8 +6,6 @@ interface Props {
 
 const GameTrailer = ({ gameId }: Props) => {
     const { data } = useTrailers(gameId);
-    console.log(data);
-
     const first = data?.results[0];
 
     return first ? (
